@@ -11,7 +11,7 @@ import {
   SiPython,
 } from "react-icons/si";
 import LogoLoop from "./LogoLoop";
-import bgImage from "../images/2026.png";
+import bgImage from "../images/2025 potrait.png";
 import PCounter from "../components/PCounter";
 
 export interface BentoCardProps {

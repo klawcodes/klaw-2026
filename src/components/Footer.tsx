@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import SumpahMatiLogo from "../images/SUMPAH MATI LOGO-01.svg";
 
 interface FooterProps {
   brandName?: string;
@@ -17,9 +18,13 @@ const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-8 py-14 lg:px-12 lg:py-16">
         <div className="flex flex-col lg:flex-row justify-between items-start pb-10 border-b border-white/20 mb-10 gap-10">
           <div className="flex-1 max-w-xl">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 tracking-tight text-white">
-              {brandName}
-            </h2>
+            <div className="flex justify-start">
+              <img
+                src={SumpahMatiLogo}
+                alt="Sumpah Mati Logo"
+                className="w-64 h-64 md:w-48 md:h-48 -m-1"
+              />
+            </div>
             <p className="text-white/70 text-base leading-relaxed">{tagline}</p>
           </div>
 
