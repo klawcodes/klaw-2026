@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Orb from "../components/Orb";
 import ShinyText from "../components/ShinyText";
@@ -6,6 +6,47 @@ import CardNav from "../components/CardNav";
 import MagicBento from "../components/MagicBento";
 import SmoothScrolling from "../components/SmoothScrolling";
 import FlowingMenu from "../components/FlowingMenu";
+import CardSwap, { Card } from "../components/CardSwap";
+import PixelCard from "../components/PixelCard";
+import ScrollReveal from "../components/ScrollReveal";
+import ContactBento from "../components/ContactBento";
+import MarqueeLabel from "../components/MarqueeLabel";
+import Footer from "../components/Footer";
+
+interface NavLink {
+  label: string;
+  href: string;
+  ariaLabel?: string;
+}
+
+interface NavItem {
+  label: string;
+  bgColor: string;
+  textColor: string;
+  links?: NavLink[];
+}
+
+interface CardNavProps {
+  logo?: string;
+  logoAlt?: string;
+  items?: NavItem[];
+  className?: string;
+  ease?: string;
+  baseColor?: string;
+  menuColor?: string;
+  buttonBgColor?: string;
+  buttonTextColor?: string;
+}
+
+interface MenuItemProps {
+  link: string;
+  text: string;
+  image: string;
+}
+
+interface FlowingMenuProps {
+  items: MenuItemProps[];
+}
 
 const items = [
   {
@@ -76,6 +117,8 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <SmoothScrolling>
       <main className="min-h-screen bg-black text-white relative">
+        <MarqueeLabel />
+
         {/* Background Orb with Parallax */}
         <div
           className="fixed top-0 left-0 w-full h-full z-0"
@@ -153,20 +196,20 @@ const IndexPage: React.FC<PageProps> = () => {
             }
           }
         `}</style>
-        <div className="bg-slate-950 relative z-10 h-[110vh] items-center justify-center px-12">
-          <div style={{ height: "600px", position: "relative" }}>
-            <h2 className="text-5xl py-4">Featured Works</h2>
-            <FlowingMenu items={demoItems} />
-          </div>
+        <div className="relative z-10 h-[70%] flex items-center justify-center py-20 px-4 bg-slate-950">
+          <PixelCard></PixelCard>
         </div>
-        <section className="relative z-10 h-screen flex items-center justify-center px-4">
+
+        <section className="relative z-10 flex items-center justify-center px-4 py-20">
           <div className="w-[50%] max-w-7xl mx-auto">
             <h1 className="shiny-text animate-shine text-center text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold px-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
               The future is built on small connections. Let’s make one.
             </h1>
+            <ContactBento></ContactBento>
           </div>
         </section>
       </main>
+      <Footer></Footer>
     </SmoothScrolling>
   );
 };

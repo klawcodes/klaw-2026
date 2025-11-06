@@ -80,7 +80,7 @@ const cardData: BentoCardProps[] = [
     color: "#060010",
     title: "Let's Connect",
     description: "",
-    label: "Connect",
+    label: "",
   },
   {
     color: "#060010",
