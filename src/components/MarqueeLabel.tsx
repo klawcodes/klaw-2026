@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 interface MarqueeProps {
   text?: string;
+  speed?: number;
 }
 
 const MarqueeLabel: React.FC<MarqueeProps> = ({
   text = "website is under development ★",
+  speed = 60,
 }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Jangan render saat SSR
+  if (!isClient) {
+    return null;
+  }
+
   // Duplikasi teks untuk memastikan tidak ada gap
   const repeatedText = Array(20).fill(text).join(" ");
 
@@ -29,20 +42,17 @@ const MarqueeLabel: React.FC<MarqueeProps> = ({
           right: 0;
           z-index: 9999;
         }
-
         .marquee-content {
           display: flex;
           width: fit-content;
-          animation: marquee 60s linear infinite;
+          animation: marquee ${speed}s linear infinite;
         }
-
         .marquee-text {
           white-space: nowrap;
           padding-right: 2rem;
           font-size: 14px;
           font-weight: 500;
         }
-
         @keyframes marquee {
           0% {
             transform: translateX(0);
@@ -51,7 +61,6 @@ const MarqueeLabel: React.FC<MarqueeProps> = ({
             transform: translateX(-50%);
           }
         }
-
         @media (max-width: 768px) {
           .marquee-text {
             font-size: 12px;
