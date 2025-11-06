@@ -885,14 +885,15 @@ const MagicBento: React.FC<BentoProps> = ({
                   enableMagnetism={enableMagnetism}
                 >
                   {index === 0 && (
-                    <div
-                      className="absolute inset-0 pointer-events-none"
+                    <img
+                      src={bgImage}
+                      alt="background"
+                      className="absolute inset-0 pointer-events-none opacity-30"
                       style={{
-                        backgroundImage: `url(${bgImage})`,
-                        backgroundSize: "200px", // ukuran lebih kecil
-                        backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat",
-                        opacity: 0.3, // opacity hanya untuk background
+                        width: "1000px",
+                        height: "1000px",
+                        objectFit: "contain",
+                        margin: "auto",
                         zIndex: 0,
                       }}
                     />
