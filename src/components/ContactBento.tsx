@@ -6,8 +6,8 @@ export default function ContactBento() {
     {
       icon: <Mail className="w-8 h-8" />,
       label: "Email",
-      value: "meet@sumpahmati.men",
-      href: "mailto:meet@sumpahmati.men",
+      value: "me@smtx.my.id",
+      href: "mailto:me@smtx.my.id",
       color: "from-red-500/20 to-orange-500/20",
       hoverColor: "hover:border-orange-500/50",
     },
