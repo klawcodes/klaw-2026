@@ -1,5 +1,6 @@
 import React from "react";
 import { worksData } from "../data/works";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Footer = React.lazy(() => import("../components/Footer"));
 const CardNav = React.lazy(() => import("../components/CardNav"));

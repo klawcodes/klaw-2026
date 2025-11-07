@@ -1,8 +1,3 @@
-import awasImsakMockup from "../images/project/awas-imsak-mockup.png";
-import republikRempahMockup from "../images/project/republik-rempah-mockup.png";
-import donasikitaMockup from "../images/project/donasikita-mockup.png";
-import capresfactsMockup from "../images/project/capresfacts-mockup.png";
-
 export interface Work {
   id: string;
   slug: string;
@@ -25,7 +20,7 @@ export const worksData: Work[] = [
       overview:
         "Awas Imsak is a web application designed to help Muslims in Indonesia track their prayer times, with a special focus on Imsak timing during Ramadan. Built with Next.js and TypeScript, this project showcases modern web development practices while serving a practical religious purpose.",
       technologies: ["Next JS", "TypeScript", "Tailwind"],
-      images: [awasImsakMockup],
+      images: ["/images/project/awas-imsak-mockup.png"], // Path langsung dari static
     },
   },
   {
@@ -37,7 +32,7 @@ export const worksData: Work[] = [
       overview:
         "An e-commerce platform dedicated to selling premium Indonesian spices and ready-to-use seasonings. Created for Ahmad Septian, a spice entrepreneur from East Bekasi, this Laravel and Livewire-powered website brings traditional flavors to the digital age.",
       technologies: ["Laravel", "Livewire", "Tailwind CSS"],
-      images: [republikRempahMockup],
+      images: ["/images/project/republik-rempah-mockup.png"],
     },
   },
   {
@@ -49,7 +44,7 @@ export const worksData: Work[] = [
       overview:
         "Platform donasi untuk membantu berbagai kegiatan sosial dan kemanusiaan.",
       technologies: ["React", "Node.js", "PostgreSQL"],
-      images: [donasikitaMockup],
+      images: ["/images/project/donasikita-mockup.png"],
     },
   },
   {
@@ -61,7 +56,7 @@ export const worksData: Work[] = [
       overview:
         "Platform informasi untuk mengetahui fakta-fakta tentang kandidat capres.",
       technologies: ["Next.js", "TypeScript", "Tailwind"],
-      images: [capresfactsMockup],
+      images: ["/images/project/capresfacts-mockup.png"],
     },
   },
 ];
