@@ -10,7 +10,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({
   brandName = "Sumpah Mati™",
-  tagline = "Your aunt favorite designer.",
+  tagline = "your aunty’s favorite multitool.",
   currentYear = new Date().getFullYear(),
 }) => {
   return (
@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({
               <img
                 src={SumpahMatiLogo}
                 alt="Sumpah Mati Logo"
-                className="w-64 h-64 md:w-48 md:h-48 -m-1"
+                className="w-24 h-24 md:w-48 md:h-48 -m-1"
               />
             </div>
             <p className="text-white/70 text-base leading-relaxed">{tagline}</p>

@@ -17,6 +17,7 @@ const ScrollReveal = React.lazy(() => import("../components/ScrollReveal"));
 const ContactBento = React.lazy(() => import("../components/ContactBento"));
 const MarqueeLabel = React.lazy(() => import("../components/MarqueeLabel"));
 const Footer = React.lazy(() => import("../components/Footer"));
+const CursorFollower = React.lazy(() => import("../components/CursorFollower"));
 
 interface NavLink {
   label: string;
@@ -203,8 +204,19 @@ const IndexPage: React.FC<PageProps> = () => {
               />
             </div>
 
+            {/* Cursor Follower - hanya aktif di hero section */}
+            <React.Suspense fallback={null}>
+              <CursorFollower
+                text="scroll to explore"
+                sectionId="hero-section"
+              />
+            </React.Suspense>
+
             {/* Hero Section - Full Screen */}
-            <section className="relative z-10 h-screen flex items-center justify-center px-4">
+            <section
+              className="relative z-10 h-screen flex items-center justify-center px-4"
+              id="hero-section"
+            >
               <div className="w-[50%] max-w-7xl mx-auto">
                 <h1 className="shiny-text animate-shine text-center text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold px-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
                   I want to see my future and God has already given me twice.
@@ -253,10 +265,9 @@ const IndexPage: React.FC<PageProps> = () => {
                 }
               }
             `}</style>
-            <div className="relative z-10 h-[70%] flex items-center justify-center py-20 px-4 bg-slate-950">
+            <div className="relative z-10 h-[70%] flex items-center justify-center py-20 px-4 sm:px-8 bg-slate-950">
               <PixelCard></PixelCard>
             </div>
-
             <section className="relative z-10 flex items-center justify-center px-4 py-20">
               <div className="w-[50%] max-w-7xl mx-auto">
                 <h1 className="shiny-text animate-shine text-center text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold px-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
@@ -275,4 +286,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Sumpah Mati - The Future</title>;
