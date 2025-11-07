@@ -42,7 +42,7 @@ export const worksData: Work[] = [
     description: "Donation platform",
     content: {
       overview:
-        "Platform donasi untuk membantu berbagai kegiatan sosial dan kemanusiaan.",
+        "A community-driven donation platform created for RT.003 residents to foster a better neighborhood through mutual aid. Built with CodeIgniter as part of a final semester project, this web application demonstrates the power of transparent giving and community engagement.",
       technologies: ["React", "Node.js", "PostgreSQL"],
       images: ["/images/project/donasikita-mockup.png"],
     },
@@ -54,7 +54,7 @@ export const worksData: Work[] = [
     description: "Presidential candidate information platform",
     content: {
       overview:
-        "Platform informasi untuk mengetahui fakta-fakta tentang kandidat capres.",
+        "A dynamic web platform showcasing comprehensive facts about Indonesia’s 2024 presidential candidates. This website serves as a go-to resource for voters seeking reliable information about their potential leaders. Using HTML, Vanilla CSS, and JavaScript, the site delivers a clean, straightforward user experience focused on transparency and accessibility.",
       technologies: ["Next.js", "TypeScript", "Tailwind"],
       images: ["/images/project/capresfacts-mockup.png"],
     },

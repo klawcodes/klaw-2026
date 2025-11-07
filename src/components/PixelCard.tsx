@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import React from "react";
+import { Link } from "gatsby";
 
 class Pixel {
   width: number;
@@ -333,9 +334,12 @@ export default function App() {
           <p className="text-white/80 text-lg mb-6">
             Where faith meets innovation
           </p>
-          <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition-colors">
+          <Link
+            to="/works"
+            className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition-colors"
+          >
             Explore My Work
-          </button>
+          </Link>
         </div>
       </PixelCard>
     </div>
