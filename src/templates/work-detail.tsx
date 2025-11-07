@@ -1,0 +1,136 @@
+import React from "react";
+import { worksData } from "../data/works";
+
+const Footer = React.lazy(() => import("../components/Footer"));
+const CardNav = React.lazy(() => import("../components/CardNav"));
+
+interface WorkDetailProps {
+  pageContext: {
+    workId: string;
+  };
+}
+
+const items = [
+  {
+    label: "About",
+    bgColor: "#0D0716",
+    textColor: "#fff",
+    links: [
+      { label: "Company", ariaLabel: "About Company" },
+      { label: "Careers", ariaLabel: "About Careers" },
+    ],
+  },
+  {
+    label: "Projects",
+    bgColor: "#170D27",
+    textColor: "#fff",
+    links: [
+      { label: "Featured", ariaLabel: "Featured Projects" },
+      { label: "Case Studies", ariaLabel: "Project Case Studies" },
+    ],
+  },
+  {
+    label: "Contact",
+    bgColor: "#271E37",
+    textColor: "#fff",
+    links: [
+      { label: "Email", ariaLabel: "Email us" },
+      { label: "Twitter", ariaLabel: "Twitter" },
+      { label: "LinkedIn", ariaLabel: "LinkedIn" },
+    ],
+  },
+];
+
+const WorkDetail: React.FC<WorkDetailProps> = ({ pageContext }) => {
+  const work = worksData.find((w) => w.id === pageContext.workId);
+
+  if (!work) {
+    return <div>Work not found</div>;
+  }
+
+  return (
+    <div className="bg-black min-h-screen text-white">
+      {/* Navigation */}
+      <div className="relative z-50">
+        <CardNav
+          logoAlt="Company Logo"
+          items={items}
+          menuColor="#fff"
+          buttonBgColor="#111"
+          buttonTextColor="#fff"
+          ease="power3.out"
+        />
+      </div>
+
+      {/* Hero Section */}
+      <div className="w-full px-6 py-32 lg:px-20 xl:px-28 2xl:px-32">
+        {/* Small title / Category */}
+        <div className="mb-8">
+          <p className="text-gray-400 text-sm lg:text-base uppercase tracking-wider">
+            {work.category || "PROJECT"}
+          </p>
+        </div>
+
+        {/* Main Title */}
+        <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-8">
+          {work.title}
+        </h1>
+
+        {/* Featured Image/Video */}
+        {work.content.images && work.content.images[0] && (
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-16">
+            <img
+              src={work.content.images[0]}
+              alt={work.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        {/* Description */}
+        <div className="max-w-4xl">
+          <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed mb-12">
+            {work.description}
+          </p>
+        </div>
+
+        {/* Content Sections */}
+        <div className="space-y-20 mt-20">
+          {/* Overview */}
+          {work.content.overview && (
+            <section>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6">Overview</h2>
+              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-4xl">
+                {work.content.overview}
+              </p>
+            </section>
+          )}
+
+          {/* Technologies */}
+          {work.content.technologies &&
+            work.content.technologies.length > 0 && (
+              <section>
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+                  Technologies
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {work.content.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-6 py-3 bg-white/10 rounded-full text-base lg:text-lg"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            )}
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default WorkDetail;
