@@ -8,46 +8,14 @@ const SmoothScrolling = React.lazy(
   () => import("../components/SmoothScrolling"),
 );
 
-const items = [
-  {
-    label: "About",
-    bgColor: "#0D0716",
-    textColor: "#fff",
-    links: [
-      { label: "Company", ariaLabel: "About Company" },
-      { label: "Careers", ariaLabel: "About Careers" },
-    ],
-  },
-  {
-    label: "Projects",
-    bgColor: "#170D27",
-    textColor: "#fff",
-    links: [
-      { label: "Featured", ariaLabel: "Featured Projects" },
-      { label: "Case Studies", ariaLabel: "Project Case Studies" },
-    ],
-  },
-  {
-    label: "Contact",
-    bgColor: "#271E37",
-    textColor: "#fff",
-    links: [
-      { label: "Email", ariaLabel: "Email us" },
-      { label: "Twitter", ariaLabel: "Twitter" },
-      { label: "LinkedIn", ariaLabel: "LinkedIn" },
-    ],
-  },
-];
-
 const WorksPage = () => {
   return (
     <SmoothScrolling>
-      <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-black px-4 sm:px-6 lg:px-8">
         {/* Navigation */}
         <div className="relative z-50">
           <CardNav
             logoAlt="Company Logo"
-            items={items}
             menuColor="#fff"
             buttonBgColor="#111"
             buttonTextColor="#fff"
@@ -55,7 +23,7 @@ const WorksPage = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto my-24">
+        <div className="max-w-7xl mx-auto my-24 py-12">
           <div className="mb-8">
             <p className="text-gray-400 text-sm lg:text-base tracking-wider">
               <Link to="/">home</Link>

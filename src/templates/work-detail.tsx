@@ -2,6 +2,8 @@ import React from "react";
 import { worksData } from "../data/works";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
+import { ExternalLink, Github, XCircle, Lock } from "lucide-react";
+
 const SmoothScrolling = React.lazy(
   () => import("../components/SmoothScrolling"),
 );
@@ -14,37 +16,6 @@ interface WorkDetailProps {
     workId: string;
   };
 }
-
-const items = [
-  {
-    label: "About",
-    bgColor: "#0D0716",
-    textColor: "#fff",
-    links: [
-      { label: "Company", ariaLabel: "About Company" },
-      { label: "Careers", ariaLabel: "About Careers" },
-    ],
-  },
-  {
-    label: "Projects",
-    bgColor: "#170D27",
-    textColor: "#fff",
-    links: [
-      { label: "Featured", ariaLabel: "Featured Projects" },
-      { label: "Case Studies", ariaLabel: "Project Case Studies" },
-    ],
-  },
-  {
-    label: "Contact",
-    bgColor: "#271E37",
-    textColor: "#fff",
-    links: [
-      { label: "Email", ariaLabel: "Email us" },
-      { label: "Twitter", ariaLabel: "Twitter" },
-      { label: "LinkedIn", ariaLabel: "LinkedIn" },
-    ],
-  },
-];
 
 const WorkDetail: React.FC<WorkDetailProps> = ({ pageContext }) => {
   const work = worksData.find((w) => w.id === pageContext.workId);
@@ -60,7 +31,6 @@ const WorkDetail: React.FC<WorkDetailProps> = ({ pageContext }) => {
         <div className="relative z-50">
           <CardNav
             logoAlt="Company Logo"
-            items={items}
             menuColor="#fff"
             buttonBgColor="#111"
             buttonTextColor="#fff"
@@ -81,6 +51,95 @@ const WorkDetail: React.FC<WorkDetailProps> = ({ pageContext }) => {
           <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-8">
             {work.title}
           </h1>
+
+          {/* Project Links - Added here */}
+          {work.links && (
+            <div className="flex flex-wrap gap-4 mb-12">
+              {/* Demo Link */}
+              {work.links.demo && (
+                <a
+                  href={
+                    work.links.demo.isActive ? work.links.demo.url : undefined
+                  }
+                  target={work.links.demo.isActive ? "_blank" : undefined}
+                  rel={
+                    work.links.demo.isActive ? "noopener noreferrer" : undefined
+                  }
+                  className={`
+                    group relative inline-flex items-center gap-2 px-6 py-3 rounded-lg
+                    backdrop-blur-md bg-white/5 border border-white/10
+                    transition-all duration-300
+                    ${
+                      work.links.demo.isActive
+                        ? "hover:bg-white/10 hover:border-white/20 cursor-pointer"
+                        : "opacity-60 cursor-not-allowed"
+                    }
+                  `}
+                >
+                  {work.links.demo.isActive ? (
+                    <>
+                      <ExternalLink className="w-4 h-4 transition-transform group-hover:scale-110" />
+                      <span className="font-medium">Live Website</span>
+                    </>
+                  ) : (
+                    <>
+                      <XCircle className="w-4 h-4" />
+                      <span className="font-medium">Demo (Shutdown)</span>
+                    </>
+                  )}
+
+                  {/* Glassmorphism hover effect */}
+                  {work.links.demo.isActive && (
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-pink-500/0 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  )}
+                </a>
+              )}
+
+              {/* Repository Link */}
+              {work.links.repository && (
+                <a
+                  href={
+                    work.links.repository.isPublic
+                      ? work.links.repository.url
+                      : undefined
+                  }
+                  target={work.links.repository.isPublic ? "_blank" : undefined}
+                  rel={
+                    work.links.repository.isPublic
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className={`
+                    group relative inline-flex items-center gap-2 px-6 py-3 rounded-lg
+                    backdrop-blur-md bg-white/5 border border-white/10
+                    transition-all duration-300
+                    ${
+                      work.links.repository.isPublic
+                        ? "hover:bg-white/10 hover:border-white/20 cursor-pointer"
+                        : "opacity-60 cursor-not-allowed"
+                    }
+                  `}
+                >
+                  {work.links.repository.isPublic ? (
+                    <>
+                      <Github className="w-4 h-4 transition-transform group-hover:scale-110" />
+                      <span className="font-medium">Repository</span>
+                    </>
+                  ) : (
+                    <>
+                      <Lock className="w-4 h-4" />
+                      <span className="font-medium">Repository (Private)</span>
+                    </>
+                  )}
+
+                  {/* Glassmorphism hover effect */}
+                  {work.links.repository.isPublic && (
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-pink-500/0 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  )}
+                </a>
+              )}
+            </div>
+          )}
 
           {/* Featured Image/Video */}
           {work.content.images && work.content.images[0] && (

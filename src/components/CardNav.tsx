@@ -1,7 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-// use your own icon import if react-icons is not available
-//import { GoArrowUpRight } from 'react-icons/go';
 
 type CardNavLink = {
   label: string;
@@ -17,9 +15,9 @@ export type CardNavItem = {
 };
 
 export interface CardNavProps {
-  logo: string;
+  logo?: string;
   logoAlt?: string;
-  items: CardNavItem[];
+  items?: CardNavItem[]; // Made optional
   className?: string;
   ease?: string;
   baseColor?: string;
@@ -28,10 +26,61 @@ export interface CardNavProps {
   buttonTextColor?: string;
 }
 
+// Default items - bisa diubah sesuai kebutuhan
+const defaultItems: CardNavItem[] = [
+  {
+    label: "About",
+    bgColor: "#0D0716",
+    textColor: "#fff",
+    links: [
+      { label: "Sumpah Mati", href: "/about", ariaLabel: "About Sumpah Mati" },
+    ],
+  },
+  {
+    label: "Projects",
+    bgColor: "#170D27",
+    textColor: "#fff",
+    links: [
+      {
+        label: "Featured",
+        href: "/works",
+        ariaLabel: "Featured Projects",
+      },
+    ],
+  },
+  {
+    label: "Contact",
+    bgColor: "#271E37",
+    textColor: "#fff",
+    links: [
+      {
+        label: "Email",
+        href: "mailto:me@smtx.my.id",
+        ariaLabel: "Email us",
+      },
+      {
+        label: "Github",
+        href: "https://github.com/klawcodes",
+        ariaLabel: "Github",
+      },
+      {
+        label: "Instagram",
+        href: "https://instagram.com/riotrevenger",
+        ariaLabel: "Instagram",
+      },
+      {
+        label: "Instagram",
+        href: "https://instagram.com/misplacestudio",
+        ariaLabel: "Instagram",
+      },
+    ],
+  },
+];
+
 const CardNav: React.FC<CardNavProps> = ({
   logo,
   logoAlt = "Logo",
-  items,
+  items = defaultItems, // Use default items if not provided
   className = "",
   ease = "power3.out",
   baseColor = "#fff",

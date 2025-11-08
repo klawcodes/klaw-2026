@@ -8,6 +8,16 @@ export interface Work {
     technologies: string[];
     images: string[];
   };
+  links?: {
+    demo?: {
+      url: string;
+      isActive: boolean; // true = live, false = shutdown
+    };
+    repository?: {
+      url: string;
+      isPublic: boolean; // true = public, false = private
+    };
+  };
 }
 
 export const worksData: Work[] = [
@@ -20,7 +30,17 @@ export const worksData: Work[] = [
       overview:
         "Awas Imsak is a web application designed to help Muslims in Indonesia track their prayer times, with a special focus on Imsak timing during Ramadan. Built with Next.js and TypeScript, this project showcases modern web development practices while serving a practical religious purpose.",
       technologies: ["Next JS", "TypeScript", "Tailwind"],
-      images: ["/images/project/awas-imsak-mockup.png"], // Path langsung dari static
+      images: ["/images/project/awas-imsak-mockup.png"],
+    },
+    links: {
+      demo: {
+        url: "https://imsak.my.id",
+        isActive: true,
+      },
+      repository: {
+        url: "https://github.com/klawcodes/awas-imsak",
+        isPublic: true,
+      },
     },
   },
   {
@@ -34,6 +54,16 @@ export const worksData: Work[] = [
       technologies: ["Laravel", "Livewire", "Tailwind CSS"],
       images: ["/images/project/republik-rempah-mockup.png"],
     },
+    links: {
+      demo: {
+        url: "https://republikrempah.com",
+        isActive: true,
+      },
+      repository: {
+        url: "",
+        isPublic: false,
+      },
+    },
   },
   {
     id: "3",
@@ -46,6 +76,16 @@ export const worksData: Work[] = [
       technologies: ["React", "Node.js", "PostgreSQL"],
       images: ["/images/project/donasikita-mockup.png"],
     },
+    links: {
+      demo: {
+        url: "",
+        isActive: false, // Website shutdown
+      },
+      repository: {
+        url: "https://github.com/klawcodes/sisd",
+        isPublic: true,
+      },
+    },
   },
   {
     id: "4",
@@ -54,9 +94,19 @@ export const worksData: Work[] = [
     description: "Presidential candidate information platform",
     content: {
       overview:
-        "A dynamic web platform showcasing comprehensive facts about Indonesia’s 2024 presidential candidates. This website serves as a go-to resource for voters seeking reliable information about their potential leaders. Using HTML, Vanilla CSS, and JavaScript, the site delivers a clean, straightforward user experience focused on transparency and accessibility.",
+        "A dynamic web platform showcasing comprehensive facts about Indonesia's 2024 presidential candidates. This website serves as a go-to resource for voters seeking reliable information about their potential leaders. Using HTML, Vanilla CSS, and JavaScript, the site delivers a clean, straightforward user experience focused on transparency and accessibility.",
       technologies: ["Next.js", "TypeScript", "Tailwind"],
       images: ["/images/project/capresfacts-mockup.png"],
+    },
+    links: {
+      demo: {
+        url: "",
+        isActive: false,
+      },
+      repository: {
+        url: "https://github.com/klawcodes/capres-facts-web",
+        isPublic: true,
+      },
     },
   },
 ];
